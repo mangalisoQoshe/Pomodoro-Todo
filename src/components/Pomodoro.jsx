@@ -4,13 +4,14 @@ import styles from "./Pomodoro.module.css"
 //components import
 import PomoNav from "./PomoNav"
 import PomoButton from "./PomoButton"
+import Counter from "./Counter"
 
 
 export default function Pomodoro() {
   return (
     <div className={styles.card}>
         <PomoNav/>
-        <h1>50:00</h1>
+        <Counter count="69:00"/>
         <PomoButton/>
     </div>
   )

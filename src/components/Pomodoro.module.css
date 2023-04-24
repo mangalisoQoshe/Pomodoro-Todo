@@ -5,4 +5,50 @@
   margin-inline: auto;
   margin-top: 1rem;
   box-shadow: 5px 5px 10px #0000003d;
+  text-align: center;
+  
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.btn-container button {
+  padding: 0.6rem;
+  
+}
+
+.active {
+  border-style: solid;
+  border-color: #9ba4b5;
+  background-color: #212a3e;
+}
+
+.counter {
+  font-family: "Bruno Ace SC", cursive;
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  min-height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.count {
+  text-align: center;
+  padding: 1rem;
+  background-color: red;
+  border-radius: 0.7rem;
+  display: inline-block;
+  max-height: 190px;
+  max-width: 400px;
+}
+
+.start-btn{
+ border-color: #212a3e;
+ text-align: center;
+ box-shadow: 2px 3px 2px #212a3e;
 }
