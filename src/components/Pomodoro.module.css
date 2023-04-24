@@ -1,0 +1,8 @@
+.card {
+  width: 90%;
+  height: 70vh;
+  background-color: #394867b7;
+  margin-inline: auto;
+  margin-top: 1rem;
+  box-shadow: 5px 5px 10px #0000003d;
+}

@@ -1,9 +1,21 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --ff-numbers: "Bruno Ace SC", cursive;
+  --ff-text: "Rajdhani", sans-serif;
+
   line-height: 1.5;
-  
 
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
 
+  --clr-100: #212a3e;
+  --clr-200: #394867;
+  --clr-300: #f1f6f9;
+  --clr-400: #9ba4b5;
+
+  --fs-100: 1rem;
+  --fs-200: 1.5rem;
+  --fs-500: 4rem;
 }
 
 /*
@@ -55,8 +67,7 @@ a:not([class]) {
 
 /* Make images easier to work with */
 img,
-picture,
-svg {
+picture{
   max-width: 100%;
   display: block;
 }
@@ -77,12 +88,41 @@ svg {
   }
 }
 
-
-
 /*
   ====================================================
   #General Styles
   ====================================================
+*/
+
+body {
+  background-color: var(--clr-100);
+  color: var(--clr-300);
+  font-size: var(--fs-200);
+  font-family: var(--ff-text);
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+  ========================================
+  #Buttons
+  ========================================
+*/
+.container {
+  --max-width: 890px;
+  --container-padding: 1rem;
+
+  width: min(var(--max-width), 100% - (var(--container-padding) * 2));
+  margin-inline: auto;
+}
+
+/*
+  ========================================
+  #Buttons
+  ========================================
 */
 
 button {
@@ -103,4 +143,3 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
