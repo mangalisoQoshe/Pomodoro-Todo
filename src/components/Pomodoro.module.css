@@ -6,17 +6,19 @@
   margin-top: 1rem;
   box-shadow: 5px 5px 10px #0000003d;
   text-align: center;
+  position: relative;
   
 }
 
 .btn-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 0.5rem;
+  display: inline-block;
+ 
+  padding-top: 0.9rem;
 }
 
 .btn-container button {
   padding: 0.6rem;
+  margin-right: 0.5rem;
   
 }
 
@@ -31,7 +33,7 @@
   font-size: 100px;
   font-weight: bold;
   text-align: center;
-  min-height: 70%;
+  min-height: 65%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,6 +51,14 @@
 
 .start-btn{
  border-color: #212a3e;
- text-align: center;
+
  box-shadow: 2px 3px 2px #212a3e;
+ padding-inline: 2.5rem;
+ margin-bottom: 1rem;
+}
+
+
+.settings-icon{
+ position: absolute;
+ right: 0;
 }
