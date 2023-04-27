@@ -3,16 +3,16 @@
 //styles
 import styles from "./Pomodoro.module.css";
 
-export default function PomoButton() {
+export default function PomoButton({isRunning,setIsRunning}) {
 
   const handleButtonClick=()=>{
-    console.log("1")
+    setIsRunning(!isRunning)
   }
   return (
     <button 
     className={styles["start-btn"]}
     onClick={handleButtonClick  }
     
-    >Start</button>
+    >{isRunning ?'Pause' : 'Start'}</button>
   )
 }
