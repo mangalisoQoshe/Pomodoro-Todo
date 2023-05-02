@@ -1,6 +1,6 @@
 # Pomodoro-Todo Timer
 
-URL: https://645109b1c292a95c8f171211--melodic-quokka-c2d064.netlify.app/
+URL: https://melodic-quokka-c2d064.netlify.app/
 
 A timer for the Pomodoro technique that includes a to-do list feature.
 
