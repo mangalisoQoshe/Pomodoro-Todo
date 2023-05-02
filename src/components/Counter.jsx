@@ -5,7 +5,7 @@ import { useEffect,useState } from "react";
 
 
 export default function Counter({ count, setCount, isRunning, setIsRunning }) {
-  const [audio] = useState(new Audio("public/assets/rooster.wav"));
+  const [audio] = useState(new Audio("/rooster.wav"));
 
   useEffect(() => {
     if (isRunning && count > 0) {
