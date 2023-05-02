@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styles from "./Pomodoro.module.css";
 import PropTypes from "prop-types";
+import audioSound from "/src/assets/click-button-140881.mp3"
 
 
 export default function PomoButton({isRunning,setIsRunning,count}) {
-  const [audio] = useState(new Audio("/src/assets/click-button-140881.mp3"));
+  const [audio] = useState(new Audio(audioSound));
   const handleButtonClick=()=>{
     setIsRunning(!isRunning)
     audio.play()

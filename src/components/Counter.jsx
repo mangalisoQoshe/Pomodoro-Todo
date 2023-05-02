@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import styles from "./Pomodoro.module.css";
 import { useEffect,useState } from "react";
+import audioSound from "/src/assets/rooster.wav"
 
 export default function Counter({ count, setCount, isRunning, setIsRunning }) {
-  const [audio] = useState(new Audio("/src/assets/rooster.wav"));
+  const [audio] = useState(new Audio(audioSound));
+
   useEffect(() => {
     if (isRunning && count > 0) {
       const intervalId = setInterval(() => {
