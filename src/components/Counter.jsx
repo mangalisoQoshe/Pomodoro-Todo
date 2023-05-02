@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import styles from "./Pomodoro.module.css";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 
 export default function Counter({ count, setCount, isRunning, setIsRunning }) {
+  const [audio] = useState(new Audio("src/assets/rooster.wav"));
   useEffect(() => {
     if (isRunning && count > 0) {
       const intervalId = setInterval(() => {
@@ -12,7 +13,11 @@ export default function Counter({ count, setCount, isRunning, setIsRunning }) {
       return () => clearInterval(intervalId);
     } else if (isRunning && count === 0) {
       setIsRunning(false);
-      alert("Countdown complete!");
+      audio.play();
+      setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      }, 4000); // Stop audio after 4 seconds
     }
   }, [isRunning, count]);
 
@@ -28,8 +33,8 @@ export default function Counter({ count, setCount, isRunning, setIsRunning }) {
 
 Counter.propTypes = {
   className: PropTypes.string,
-  count: PropTypes.node.isRequired,
-  setCount: PropTypes.node.isRequired,
-  isRunning: PropTypes.node.isRequired,
-  setIsRunning: PropTypes.node.isRequired,
+  count: PropTypes.number.isRequired,
+  setCount: PropTypes.func.isRequired,
+  isRunning: PropTypes.bool.isRequired,
+  setIsRunning: PropTypes.func.isRequired,
 };

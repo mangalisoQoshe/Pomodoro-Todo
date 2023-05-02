@@ -3,11 +3,11 @@
   height: 60vh;
   background-color: #394867b7;
   border-radius: 0.7rem;
-  margin-inline: auto;
-  margin-top: 1rem;
   box-shadow: 5px 5px 10px #0000003d;
+  margin-inline: auto;
   text-align: center;
   position: relative;
+  margin-top: 13vh;
   
 }
 
@@ -40,8 +40,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 60%;
-  height: 60%;
+  min-width: 61%;
+  height: 75%;
 
 }
 
@@ -49,7 +49,7 @@
  border-color: #212a3e;
 
  box-shadow: 2px 3px 2px #212a3e;
- padding-inline: 2.5rem;
+ padding: 0.5rem 2rem;
  margin-bottom: 1rem;
 }
 
@@ -64,6 +64,8 @@
 
 button{
   margin-left: 0.7rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 1em;
 }
 
 
@@ -72,13 +74,26 @@ button{
 
 
   .settings-icon{
-    position: static;
+  
     padding-top: 0rem;
+    height: 32px;
   }
 
   .count{
     font-size: 90px;
   }
+
+  button{
+    padding: 0.1rem 0.4rem;
+    font-size: 16px;
+  }
+
+  .card svg {
+    width: 20px;
+    height: 32px;
+  }
+
+
 }
 
 @media (max-width: 686px) {
@@ -92,18 +107,22 @@ button{
     padding: 0.7rem 0.9rem;
   }
 
-  .settings-icon{
-  margin-top: 1rem;
-  }
+
   .count{
     font-size: 60px;
+  }
+}
+
+@media (max-width: 533px){
+  .settings-icon{
+    position: static;
   }
 }
 
 
 .settings{
   text-align: left;
-  padding: 1.5rem;
+  padding: 0.5rem;
   position: relative;
  
 }
@@ -111,27 +130,35 @@ button{
 .heading{
   font-size: 34px;
   font-weight: bold;
- margin-bottom: 2.4rem;
-}
+ }
 
 .exit-btn{
-  position: absolute;
   padding-top: 1rem;
-  top: 1rem;
+  position: absolute;
+  top: 0.5rem;
   right: 1rem;
 }
 
+
 .form{
+  background-color: #18182348;
+  padding: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 1rem;
-  font-weight: bold;
   
+}
+
+.form-heading{
+  text-align: center;
+  font-weight: bold;
 }
 
 .form input{
   border-radius: 0.4rem;
   padding-left: 0.4rem;
+  width: 60%;
+  margin-left: auto;
 
 }
 

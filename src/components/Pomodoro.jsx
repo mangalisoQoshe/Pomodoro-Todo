@@ -21,7 +21,15 @@ export default function Pomodoro() {
 
   return (
     <div className={styles.card}>
-      {isSettingsOpen && <Settings input={input} isSettingsOpen={isSettingsOpen} setInput={setInput} setSettings={setSettings}/>}
+      {isSettingsOpen && (
+        <Settings
+          input={input}
+          isSettingsOpen={isSettingsOpen}
+          setInput={setInput}
+          setSettings={setSettings}
+          setCount={setCount}
+        />
+      )}
 
       {!isSettingsOpen && (
         <>
@@ -38,7 +46,7 @@ export default function Pomodoro() {
             isRunning={isRunning}
             setIsRunning={setIsRunning}
           />
-          <PomoButton setIsRunning={setIsRunning} isRunning={isRunning} />
+          <PomoButton setIsRunning={setIsRunning} isRunning={isRunning} count={count}/>
         </>
       )}
     </div>

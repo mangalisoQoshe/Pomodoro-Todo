@@ -1,11 +1,10 @@
-//styles
+
 import { useState } from "react";
 import styles from "./Pomodoro.module.css";
-
-//library imports
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
+import PropTypes from "prop-types";
 
-//component import
+
 
 export default function PomoNav({setCount,input,setSettings,isSettingsOpen}) {
   const [activeButton,setActiveButton] = useState("PB");
@@ -65,3 +64,11 @@ export default function PomoNav({setCount,input,setSettings,isSettingsOpen}) {
     </div>
   );
 }
+
+PomoNav.propTypes = {
+  className: PropTypes.string,
+  isSettingsOpen: PropTypes.bool.isRequired,
+  setSettings: PropTypes.func.isRequired,
+  input: PropTypes.object.isRequired,
+  setCount: PropTypes.func.isRequired,
+};
