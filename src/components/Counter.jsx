@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styles from "./Pomodoro.module.css";
 import { useEffect,useState } from "react";
-import audioSound from "/src/assets/rooster.wav"
+import audioSound from "dist/assets/rooster-0ad72e18.wav"
 
 export default function Counter({ count, setCount, isRunning, setIsRunning }) {
   const [audio] = useState(new Audio(audioSound));
