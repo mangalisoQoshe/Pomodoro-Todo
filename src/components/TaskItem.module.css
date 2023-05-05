@@ -44,3 +44,12 @@
   border-color: #212a3e;
 
 }
+
+.item{
+  margin-top: 1.5rem;
+}
+
+.txt-decoration{
+  text-decoration: line-through;
+  color: grey;
+}

@@ -1,4 +1,6 @@
 .form-container {
+  margin-top: 5vh;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
@@ -34,23 +36,24 @@
 }
 
 .input:focus {
-    outline: none;
-  }
-  
-.input:focus-visible{
+  outline: none;
+}
+
+.input:focus-visible {
   outline-style: solid;
   outline-color: #9ba4b5;
 }
 
 .submitBtn {
   background-color: #646cff;
+  border-width: 0.2rem;
   max-width: 60px;
   height: 60px;
   display: inline-flex;
   place-items: center;
-  padding: 1rem;
 }
-.submitBtn:hover{
-    border-width: 0.2rem;
-    border-color: #212a3e;
+.submitBtn:hover {
+  opacity: 0.8;
+  border-color: #394867;
 }
+

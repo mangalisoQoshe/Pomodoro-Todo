@@ -1,36 +1,30 @@
-import { PlusIcon } from "@heroicons/react/24/solid";
-import styles from "./ToDo.module.css"
 import { useState } from "react";
-import TaskItem from "./TaskItem";
-
+import InputForm from "./InputForm";
+import TaskList from "./TaskList";
 
 export default function ToDo() {
-  const [input, setInput] = useState("")
+  const [tasks, setTasks] = useState([]);
 
-const handleInputChange=(event)=>{
-  setInput(event.target.value)
-  console.log(input)
-}
+  const addTask = (task) => {
+    setTasks((prevState) => [...prevState, task]);
+  };
+
+  const toggleTask = (id) => {
+    setTasks((prevState) =>
+      prevState.map((t) => (t.id === id ? { ...t, checked: !t.checked } : t))
+    );
+  };
+  const deleteTask = (id) => {
+    setTasks((prevState) => 
+      prevState.filter((t) =>  t.id != id ));
+  };
   return (
-    <div className={styles["form-container"]}>
-      <h1 className={styles.heading}> My Task List</h1>
-
-      <form >
-        <input 
-        type="text" 
-        placeholder="Enter Task"
-        value={input}
-        required
-        className={styles.input}
-        maxLength={60}
-        onChange={handleInputChange}
-        />
-
-        <button className={styles.submitBtn}>
-          <PlusIcon stroke="2" width={20} height={19} />
-        </button>
-      </form>
-      <TaskItem/>
+    <div>
+      <InputForm addTask={addTask} />
+      <TaskList 
+      tasks={tasks} 
+      toggleTask={toggleTask}
+      deleteTask={deleteTask} />
     </div>
   );
 }

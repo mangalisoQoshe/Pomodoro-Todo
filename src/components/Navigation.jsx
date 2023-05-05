@@ -34,7 +34,7 @@ export default function Navigation() {
                 width={35}
               />
             }
-            To-Do
+            My Task List
           </Link>
         </li>
       </ul>
