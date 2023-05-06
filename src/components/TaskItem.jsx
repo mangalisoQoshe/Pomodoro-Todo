@@ -2,7 +2,7 @@ import styles from "./TaskItem.module.css";
 import { TrashIcon, PencilSquareIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
-export default function TaskItem({ task, toggleTask, deleteTask }) {
+export default function TaskItem({ task, toggleTask, deleteTask,enterEditMode }) {
   const [ischecked, setIsChecked] = useState(task.checked);
 
   const handleCheckboxChange = () => {
@@ -26,7 +26,7 @@ export default function TaskItem({ task, toggleTask, deleteTask }) {
           </span>
         </label>
         <div className={styles["btn-container"]}>
-          <button className={styles.btn}>
+          <button className={styles.btn} onClick={(e)=>{enterEditMode(task)}}>
             <PencilSquareIcon stroke="2" width={32} height={32} />
           </button>
           <button className={styles.btn} onClick={(e)=>{deleteTask(task.id)}}>
