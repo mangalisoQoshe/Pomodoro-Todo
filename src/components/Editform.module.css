@@ -1,0 +1,70 @@
+.edit-form {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  border-color: #646cff;
+  border-width: 0.1rem;
+  border-style: solid;
+  padding: 3rem 1rem 3rem 2rem;
+  background-color: #292c6b;
+  box-shadow: 10px 10px 10px #03020273;
+}
+
+.label {
+  position: absolute;
+  left: 2rem;
+  top: 1rem;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: #3e6e81b7;
+  border-color: #646cff;
+  border-width: 0.1rem;
+  border-style: solid;
+  max-width: 70px;
+  height: 60px;
+  display: inline-flex;
+  place-items: center;
+  padding: 0.7rem;
+  transform: translateY(8px);
+
+}
+
+.btn:hover{
+  opacity: 0.7;
+}
+
+.update-task {
+  height: 55px;
+  min-width: 490px;
+  padding-left: 1rem;
+  border-radius: 0.4rem;
+  border-style: solid;
+  border-color: #394867;
+  color: #f1f6f9;
+  background-color: #3e6e81b7;
+}
+
+.update-task:focus {
+  outline: none;
+}
+
+.update-task:focus-visible {
+  outline-style: solid;
+  outline-color: #9ba4b5;
+}
+
+[role="dialog"] {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #292c6b8e;
+}
