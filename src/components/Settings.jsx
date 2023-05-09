@@ -1,29 +1,30 @@
 import styles from "./Pomodoro.module.css";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 export default function Settings({
   setSettings,
   input,
   setInput,
-  isSettingsOpen,
   setCount,
 }) {
+
+  const [updateInput, setUpdateInput] = useState({...input})
   const handleXBtn = () => {
-    setSettings(!isSettingsOpen);
+    setSettings(false);
   };
 
   const handleSumbitBtn = (event) => {
     event.preventDefault();
-    setSettings(!isSettingsOpen);
+    setInput({...updateInput})
+    setSettings(false);
   };
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
-    setInput((prevState) => ({ ...prevState, [id]: value }));
-    if(id === "pomodoro"){
-      setCount(value * 60)
-    }
+    setUpdateInput((prevState) => ({ ...prevState, [id]: value }));
+ 
   };
   return (
     <div className={styles.settings}>
@@ -42,7 +43,7 @@ export default function Settings({
         <input
           type="number"
           id="pomodoro"
-          value={input.pomodoro}
+          value={updateInput.pomodoro}
           min={1}
           onChange={handleInputChange}
         />
@@ -51,7 +52,7 @@ export default function Settings({
         <input
           type="number"
           id="shortBreak"
-          value={input.shortBreak}
+          value={updateInput.shortBreak}
           min={1}
           onChange={handleInputChange}
         />
@@ -60,7 +61,7 @@ export default function Settings({
         <input
           type="number"
           id="longBreak"
-          value={input.longBreak}
+          value={updateInput.longBreak}
           min={1}
           onChange={handleInputChange}
         />

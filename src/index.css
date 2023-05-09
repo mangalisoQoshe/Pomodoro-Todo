@@ -112,7 +112,7 @@ a {
   ========================================
 */
 .container {
-  --max-width: 890px;
+  --max-width: 1000px;
   --container-padding: 1rem;
 
   width: min(var(--max-width), 100% - (var(--container-padding) * 2));

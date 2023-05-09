@@ -4,15 +4,21 @@
   border-color: rgba(67, 67, 185, 0.815);
   border-radius: 0.8rem;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6em;
   font-size: 2rem;
   max-width: 58%;
+  height: 100px;
   margin-left: auto;
   margin-right: auto;
   padding: 0.5rem;
 }
 
 .btn-container {
-  margin-left: auto;
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .checkbox {
@@ -25,8 +31,18 @@
 .label {
   margin-top: auto;
   margin-bottom: auto;
+  display: flex;
+
+  cursor: pointer;
+
+  line-height: 1.4;
 }
 
+[role="task-name"] {
+  max-width: 358px;
+  ;
+  overflow:auto;
+}
 .btn {
   background-color: #3e6e81b7;
   border-color: #646cff;
@@ -37,19 +53,17 @@
   display: inline-flex;
   place-items: center;
   padding: 0.7rem;
-
 }
 
 .btn:hover {
   border-color: #212a3e;
-
 }
 
-.item{
+.item {
   margin-top: 1.5rem;
 }
 
-.txt-decoration{
+.txt-decoration {
   text-decoration: line-through;
   color: grey;
 }

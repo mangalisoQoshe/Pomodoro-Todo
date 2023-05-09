@@ -2,15 +2,18 @@ import { useState } from "react";
 import InputForm from "./InputForm";
 import TaskList from "./TaskList";
 import EditForm from "./EditForm";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function ToDo() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage("todo-list", []);
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState(null);
+
 
   const addTask = (task) => {
     setTasks((prevState) => [...prevState, task]);
   };
+
 
   const toggleTask = (id) => {
     setTasks((prevState) =>
@@ -26,9 +29,9 @@ export default function ToDo() {
     setEditedTask(task);
   };
 
-  const closeEditMode=()=>{
-    setIsEditing(false)
-  }
+  const closeEditMode = () => {
+    setIsEditing(false);
+  };
 
   const updateTask = (task) => {
     setTasks((prevState) =>
@@ -41,7 +44,13 @@ export default function ToDo() {
   return (
     <div>
       <InputForm addTask={addTask} />
-      {isEditing && <EditForm editedTask={editedTask} updateTask={updateTask}/>}
+      {isEditing && (
+        <EditForm
+          editedTask={editedTask}
+          updateTask={updateTask}
+          closeEditMode={closeEditMode}
+        />
+      )}
       <TaskList
         tasks={tasks}
         toggleTask={toggleTask}

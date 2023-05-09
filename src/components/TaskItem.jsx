@@ -21,7 +21,7 @@ export default function TaskItem({ task, toggleTask, deleteTask,enterEditMode })
             name={task.name}
             id={task.id}
           />
-          <span className={ischecked ? `${styles["txt-decoration"]}` : ""}>
+          <span role="task-name" className={ischecked ? `${styles["txt-decoration"]}` : ""}>
             {task.name}
           </span>
         </label>

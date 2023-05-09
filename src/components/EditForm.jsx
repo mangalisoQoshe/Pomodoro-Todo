@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import styles from "./Editform.module.css";
 
-export default function EditForm({ editedTask, updateTask }) {
+export default function EditForm({ editedTask, updateTask, closeEditMode }) {
   const [updateValue, setUpdatevalue] = useState(editedTask.name);
+
+  useEffect(()=>{
+    const closeModalIfEsc=(e)=>{
+      e.key === "Escape" && closeEditMode()
+    }
+
+    window.addEventListener('keydown',closeModalIfEsc)
+
+    return ()=>{window.removeEventListener("keydown",closeModalIfEsc)}
+  },[closeEditMode])
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +22,7 @@ export default function EditForm({ editedTask, updateTask }) {
 
   return (
     <>
-      <div role="dialog" />
+      <div role="dialog" onClick={(e)=>{e.target === e.currentTarget && closeEditMode()}}/>
       <form onSubmit={handleFormSubmit} className={styles["edit-form"]}>
         <input
           type="text"

@@ -8,10 +8,9 @@
 
 }
 
-
-.svg-icon{
-    display: inline-block;
-    padding-top: 0.2rem;
+nav li:hover{
+    color: #3e6e81b7;
+   
 }
 
 @media (max-width: 336px) {
