@@ -1,66 +1,59 @@
 
-import { useState } from "react";
 import styles from "./Pomodoro.module.css";
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import PropTypes from "prop-types";
 
+export default function PomoNav({
+  input,
+  updateTime,
+  setSettings,
+}) {
 
 
-export default function PomoNav({setCount,input,setSettings,isSettingsOpen}) {
-  const [activeButton,setActiveButton] = useState("PB");
+  const handleSettingsButtonClick = () => {
+    setSettings(true);
 
-  const handleButtonClick = (btnId) => {
-    setActiveButton(btnId);
-    if(btnId === "PB"){
-      setCount((input.pomodoro)*60)
-    }
-
-    else if(btnId === "SB")
-    {
-      setCount((input.shortBreak)*60)
-    }
-    else{
-      setCount((input.longBreak)*60)
-    }
-    
   };
-
-  const handleSettingsButtonClick=()=>{
-    setSettings(!isSettingsOpen)
-  }
   return (
     <div className={styles["btn-container"]}>
       <button
-        className={activeButton === "PB" ? styles.active : ""}
+        className={input.activeBtn === "pomodoro" ? styles.active : ""}
         onClick={() => {
-          handleButtonClick("PB");
+          updateTime("pomodoro");
         }}
       >
         Pomodoro
       </button>
-        
+
       <button
-       className={activeButton === "SB" ? styles.active : ""}
+        className={input.activeBtn === "shortBreak" ? styles.active : ""}
         onClick={() => {
-          handleButtonClick("SB");
+          updateTime("shortBreak");
         }}
       >
         Short Break
       </button>
 
       <button
-       className={activeButton === "LB" ? styles.active : ""}
+        className={input.activeBtn === "longBreak" ? styles.active : ""}
         onClick={() => {
-          handleButtonClick("LB");
+          updateTime("longBreak");
         }}
       >
         Long Break
       </button>
-      <button 
-      className={styles["settings-icon"]}
-      onClick={handleSettingsButtonClick}
-      
-      > <Cog6ToothIcon className={styles["svg-icon"]} strokeWidth={2} height={32} width={32}/></button>
+      <button
+        className={styles["settings-icon"]}
+        onClick={handleSettingsButtonClick}
+      >
+        {" "}
+        <Cog6ToothIcon
+          className={styles["svg-icon"]}
+          strokeWidth={2}
+          height={32}
+          width={32}
+        />
+      </button>
     </div>
   );
 }
@@ -70,5 +63,5 @@ PomoNav.propTypes = {
   isSettingsOpen: PropTypes.bool.isRequired,
   setSettings: PropTypes.func.isRequired,
   input: PropTypes.object.isRequired,
-  setCount: PropTypes.func.isRequired,
+  updateTime: PropTypes.func.isRequired,
 };

@@ -8,16 +8,48 @@ import Counter from "./Counter";
 
 import { useState } from "react";
 import Settings from "./Settings";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function Pomodoro() {
-  const [count, setCount] = useState(1500);
   const [isRunning, setIsRunning] = useState(false);
   const [isSettingsOpen, setSettings] = useState(false);
-  const [input, setInput] = useState({
+  const [input, setInput] = useLocalStorage("pomodoro-data",{
     pomodoro: 25,
     shortBreak: 5,
     longBreak: 15,
-  });
+    activeBtn: "pomodoro",
+    count: 1500,
+  })
+
+  const updateTime = (btnId) => {
+
+    switch (btnId) {
+      case "shortBreak":
+        setInput((prevState) => ({
+          ...prevState,
+          count: input.shortBreak * 60,
+          activeBtn: btnId,
+        }));
+
+        break;
+
+      case "longBreak":
+        setInput((prevState) => ({
+          ...prevState,
+          count: input.longBreak * 60,
+          activeBtn: btnId,
+        }));
+        break;
+      default:
+        setInput((prevState) => ({
+          ...prevState,
+          count: input.pomodoro * 60,
+          activeBtn: btnId,
+        }));
+        break;
+    }
+
+  };
 
   return (
     <div className={styles.card}>
@@ -27,26 +59,32 @@ export default function Pomodoro() {
           isSettingsOpen={isSettingsOpen}
           setInput={setInput}
           setSettings={setSettings}
-          setCount={setCount}
+          updateTime={updateTime}
         />
       )}
 
-      {!isSettingsOpen && (
+      {!isSettingsOpen &&  (
         <>
           {" "}
           <PomoNav
-            setCount={setCount}
             input={input}
+            updateTime={updateTime}
+            setInput={setInput}
             setSettings={setSettings}
             isSettingsOpen={isSettingsOpen}
+
           />
           <Counter
-            count={count}
-            setCount={setCount}
+            input={input}
+            setInput={setInput}
             isRunning={isRunning}
             setIsRunning={setIsRunning}
           />
-          <PomoButton setIsRunning={setIsRunning} isRunning={isRunning} count={count}/>
+          <PomoButton
+            setIsRunning={setIsRunning}
+            isRunning={isRunning}
+            input={input}
+          />
         </>
       )}
     </div>

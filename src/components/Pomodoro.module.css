@@ -1,5 +1,5 @@
 .card {
-  width: 80%;
+  width: 70%;
   height: 60vh;
   background-color: #394867b7;
   border-radius: 0.7rem;
@@ -7,7 +7,7 @@
   margin-inline: auto;
   text-align: center;
   position: relative;
-  margin-top: 13vh;
+  margin-top: 8vh;
   
 }
 
@@ -71,6 +71,7 @@ button{
 
 
 @media (max-width:773px) {
+
 
 
   .settings-icon{

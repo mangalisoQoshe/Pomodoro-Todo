@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 
 
-export default function PomoButton({isRunning,setIsRunning,count}) {
+export default function PomoButton({isRunning,setIsRunning,input}) {
   const [audio] = useState(new Audio("/click-button-140881.mp3"));
   const handleButtonClick=()=>{
     setIsRunning(!isRunning)
@@ -18,7 +18,7 @@ export default function PomoButton({isRunning,setIsRunning,count}) {
     <button 
     className={styles["start-btn"]}
     onClick={handleButtonClick  }
-    disabled={count === 0}
+    disabled={input.count === 0}
     
     >{isRunning ?'Pause' : 'Start'}</button>
   )
@@ -29,5 +29,5 @@ PomoButton.propTypes = {
   className: PropTypes.string,
   isRunning: PropTypes.bool.isRequired,
   setIsRunning: PropTypes.func.isRequired,
-  count: PropTypes.number.isRequired,
+  input: PropTypes.object.isRequired,
 };

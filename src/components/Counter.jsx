@@ -4,17 +4,18 @@ import { useEffect,useState } from "react";
 
 
 
-export default function Counter({ count, setCount, isRunning, setIsRunning }) {
+export default function Counter({  isRunning, setIsRunning,input,setInput,updateTime }) {
   const [audio] = useState(new Audio("/rooster.wav"));
 
+
   useEffect(() => {
-    if (isRunning && count > 0) {
+    if (isRunning &&  input.count > 0) {
       const intervalId = setInterval(() => {
-        setCount((count) => count - 1);
+        setInput((prevState)=>({...prevState,count: input.count -1}))
       }, 1000);
 
       return () => clearInterval(intervalId);
-    } else if (isRunning && count === 0) {
+    } else if (isRunning &&  input.count === 0) {
       setIsRunning(false);
       audio.play();
       setTimeout(() => {
@@ -22,10 +23,10 @@ export default function Counter({ count, setCount, isRunning, setIsRunning }) {
         audio.currentTime = 0;
       }, 4000); // Stop audio after 4 seconds
     }
-  }, [isRunning, count]);
+  }, [isRunning,input]);
 
-  const minutes = Math.floor(count/60);
-  const seconds = count % 60;
+  const minutes = Math.floor( input.count/60);
+  const seconds =  input.count % 60;
 
   return (
     <div className={styles.counter}>
@@ -36,8 +37,8 @@ export default function Counter({ count, setCount, isRunning, setIsRunning }) {
 
 Counter.propTypes = {
   className: PropTypes.string,
-  count: PropTypes.number.isRequired,
-  setCount: PropTypes.func.isRequired,
   isRunning: PropTypes.bool.isRequired,
   setIsRunning: PropTypes.func.isRequired,
+  input: PropTypes.object.isRequired,
+  setInput: PropTypes.func.isRequired,
 };

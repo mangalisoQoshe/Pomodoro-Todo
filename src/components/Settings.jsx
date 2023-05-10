@@ -3,28 +3,31 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export default function Settings({
-  setSettings,
-  input,
-  setInput,
-  setCount,
-}) {
+export default function Settings({ setSettings, input, setInput }) {
+  const [updateInput, setUpdateInput] = useState({
+    ...input
+  });
 
-  const [updateInput, setUpdateInput] = useState({...input})
+  
   const handleXBtn = () => {
     setSettings(false);
   };
 
   const handleSumbitBtn = (event) => {
     event.preventDefault();
-    setInput({...updateInput})
-    setSettings(false);
+    setInput({
+      ...updateInput, 
+    });
+
+    setSettings(false);  
   };
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
-    setUpdateInput((prevState) => ({ ...prevState, [id]: value }));
- 
+   
+    setUpdateInput((prevState) => ({ ...prevState, [id]: value}));
+  
+    
   };
   return (
     <div className={styles.settings}>
@@ -80,5 +83,4 @@ Settings.propTypes = {
   setSettings: PropTypes.func.isRequired,
   input: PropTypes.object.isRequired,
   setInput: PropTypes.func.isRequired,
-  setCount: PropTypes.func.isRequired,
 };
