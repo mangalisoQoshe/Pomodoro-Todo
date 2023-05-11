@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./Pomodoro.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Counter({
   isRunning,
@@ -10,6 +10,7 @@ export default function Counter({
   updateTime,
 }) {
   const [audio] = useState(new Audio("/rooster.wav"));
+  const intervalRef = useRef(4);
 
   useEffect(() => {
     if (isRunning && input.count > 0) {
@@ -18,39 +19,51 @@ export default function Counter({
       }, 1000);
 
       return () => clearInterval(intervalId);
-
     } else if (isRunning && input.count === 0) {
       setIsRunning(false);
       audio.play();
-     const time1 = setTimeout(() => {
+      const timeout1 = setTimeout(() => {
         audio.pause();
         audio.currentTime = 0;
       }, 4000); // Stop audio after 4 seconds
 
-      const time2 = setTimeout(() => {
+      setTimeout(() => {
         switch (input.activeBtn) {
           case "pomodoro":
-            updateTime("shortBreak");
+            intervalRef.current = intervalRef.current - 1;
+            console.log(intervalRef.current);
+            updateTime(intervalRef.current === 0 ? "longBreak" : "shortBreak");
             break;
 
           case "shortBreak":
-            updateTime("longBreak");
+            updateTime("pomodoro");
             break;
 
-          default:
+          case "longBreak":
+            intervalRef.current = 4; // I'll finish the interval thing later, I think the use should be able to change number of intervals
             updateTime("pomodoro");
             break;
         }
       }, 2000);
-      
-    }
 
- 
-    
+      return () => {
+        clearTimeout(timeout1);
+      };
+    }
   }, [isRunning, input]);
 
   const minutes = Math.floor(input.count / 60);
   const seconds = input.count % 60;
+
+  useEffect(() => {
+    document.title =
+      minutes +
+      ":" +
+      (seconds < 10 ? "0" + seconds : seconds) +
+      (input.activeBtn === "pomodoro"
+        ? " -Time to focus!"
+        : " -Time for a break!");
+  }, [seconds, minutes, input.activeBtn]);
 
   return (
     <div className={styles.counter}>

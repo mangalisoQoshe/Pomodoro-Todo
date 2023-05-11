@@ -3,14 +3,14 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export default function Settings({ setSettings, input, setInput, updateTime }) {
+export default function Settings({ setSettings, input, setInput }) {
   const [updateInput, setUpdateInput] = useState({
     ...input,
   });
 
   const handleXBtn = () => {
     setSettings(false);
-    updateTime("pomodoro");
+ 
   };
 
   const handleSumbitBtn = (event) => {
