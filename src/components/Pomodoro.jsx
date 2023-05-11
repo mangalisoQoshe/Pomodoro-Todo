@@ -79,6 +79,7 @@ export default function Pomodoro() {
             setInput={setInput}
             isRunning={isRunning}
             setIsRunning={setIsRunning}
+            updateTime={updateTime}
           />
           <PomoButton
             setIsRunning={setIsRunning}

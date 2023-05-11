@@ -3,31 +3,63 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export default function Settings({ setSettings, input, setInput }) {
+export default function Settings({ setSettings, input, setInput, updateTime }) {
   const [updateInput, setUpdateInput] = useState({
-    ...input
+    ...input,
   });
 
-  
   const handleXBtn = () => {
     setSettings(false);
+    updateTime("pomodoro");
   };
 
   const handleSumbitBtn = (event) => {
     event.preventDefault();
     setInput({
-      ...updateInput, 
+      ...updateInput,
     });
 
-    setSettings(false);  
+    setSettings(false);
   };
-
+  
+  
   const handleInputChange = (event) => {
     const { id, value } = event.target;
-   
-    setUpdateInput((prevState) => ({ ...prevState, [id]: value}));
-  
-    
+    console.log(id)
+    switch (id) {
+      case "shortBreak":
+        setUpdateInput((prevState) => ({
+          ...prevState,
+          shortBreak: value,
+          count:
+            updateInput.activeBtn === "shortBreak"
+              ? value * 60
+              : updateInput.count,
+        }));
+
+        break;
+
+      case "longBreak":
+        setUpdateInput((prevState) => ({
+          ...prevState,
+          longBreak: value,
+          count:
+            updateInput.activeBtn === "longBreak"
+              ? value * 60
+              : updateInput.count,
+        }));
+        break;
+      default:
+        setUpdateInput((prevState) => ({
+          ...prevState,
+          pomodoro: value,
+          count:
+            updateInput.activeBtn === "pomodoro"
+              ? value * 60
+              : updateInput.count,
+        }));
+        break;
+    }
   };
   return (
     <div className={styles.settings}>

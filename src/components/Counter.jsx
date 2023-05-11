@@ -1,36 +1,63 @@
 import PropTypes from "prop-types";
 import styles from "./Pomodoro.module.css";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
-
-
-export default function Counter({  isRunning, setIsRunning,input,setInput,updateTime }) {
+export default function Counter({
+  isRunning,
+  setIsRunning,
+  input,
+  setInput,
+  updateTime,
+}) {
   const [audio] = useState(new Audio("/rooster.wav"));
 
-
   useEffect(() => {
-    if (isRunning &&  input.count > 0) {
+    if (isRunning && input.count > 0) {
       const intervalId = setInterval(() => {
-        setInput((prevState)=>({...prevState,count: input.count -1}))
+        setInput((prevState) => ({ ...prevState, count: input.count - 1 }));
       }, 1000);
 
       return () => clearInterval(intervalId);
-    } else if (isRunning &&  input.count === 0) {
+
+    } else if (isRunning && input.count === 0) {
       setIsRunning(false);
       audio.play();
-      setTimeout(() => {
+     const time1 = setTimeout(() => {
         audio.pause();
         audio.currentTime = 0;
       }, 4000); // Stop audio after 4 seconds
-    }
-  }, [isRunning,input]);
 
-  const minutes = Math.floor( input.count/60);
-  const seconds =  input.count % 60;
+      const time2 = setTimeout(() => {
+        switch (input.activeBtn) {
+          case "pomodoro":
+            updateTime("shortBreak");
+            break;
+
+          case "shortBreak":
+            updateTime("longBreak");
+            break;
+
+          default:
+            updateTime("pomodoro");
+            break;
+        }
+      }, 2000);
+      
+    }
+
+ 
+    
+  }, [isRunning, input]);
+
+  const minutes = Math.floor(input.count / 60);
+  const seconds = input.count % 60;
 
   return (
     <div className={styles.counter}>
-      <span className={styles.count}>   {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</span>
+      <span className={styles.count}>
+        {" "}
+        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+      </span>
     </div>
   );
 }
@@ -41,4 +68,5 @@ Counter.propTypes = {
   setIsRunning: PropTypes.func.isRequired,
   input: PropTypes.object.isRequired,
   setInput: PropTypes.func.isRequired,
+  updateTime: PropTypes.func.isRequired,
 };
